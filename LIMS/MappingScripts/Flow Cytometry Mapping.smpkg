@@ -1,0 +1,67 @@
+Security Tag:1F-F2-24-C2-94-47-AB-C3-E3-39-8A-B5-50-CF-85-DC-8E-85-54-83
+{
+  "name": "Lab Mapping - Flow Cytometry Mapping",
+  "description": "Entity Deployment Package",
+  "Timestamp": "2024-12-13T13:38:41.611",
+  "Version": "21.2.0.0",
+  "operations": [
+    {
+      "description": "Data Check",
+      "operation": "data_check",
+      "deploy_action": "Run",
+      "icon": "INT_AUDITING",
+      "datastore": {
+        "PERSONNEL U_KEMIK   ": {
+          "keyValueItems": {
+            "entityType": "PERSONNEL",
+            "identity": "U_KEMIK   ",
+            "name": "Umut Kemiktarak"
+          }
+        },
+        "PHRASE_APPR_STAT APPR_STAT A         ": {
+          "keyValueItems": {
+            "entityType": "PHRASE",
+            "identity": "APPR_STAT A         ",
+            "name": "A"
+          }
+        },
+        "LAB_PARSING_SCRIPT FE437B38-C6BF-489B-B52D-6B821C25B36F         1": {
+          "keyValueItems": {
+            "entityType": "LAB_PARSING_SCRIPT",
+            "identity": "FE437B38-C6BF-489B-B52D-6B821C25B36F         1",
+            "name": "Flow Cytometry Parsing - MUK (v1)"
+          }
+        }
+      }
+    },
+    {
+      "description": "LAB_MAPPING - Flow Cytometry Mapping (v1)",
+      "operation": "default set",
+      "deploy_action": "Create",
+      "entityType": "LAB_MAPPING",
+      "icon": "LE_MAPPING",
+      "keys": {
+        "LAB_MAPPING_ID": "14C0C91B-3364-46E2-BB23-A6ECEC887D0A",
+        "LAB_MAPPING_VERSION": "         1"
+      },
+      "fieldValues": {
+        "NAME": "Flow Cytometry Mapping",
+        "MODIFIABLE": true,
+        "ORDER_NUMBER": "         0",
+        "ACTIVE": true,
+        "HAS_ATTACHMENTS": false,
+        "APPROVAL_STATUS": "A",
+        "LAB_PARSING_SCRIPT_ID": "FE437B38-C6BF-489B-B52D-6B821C25B36F",
+        "LAB_PARSING_SCRIPT_VERSION": "         1",
+        "LAB_ALIAS_VERSION": "         0"
+      },
+      "blobValues": {
+        "MAPPING_SCRIPT_BLOB": {
+          "data": "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTE2Ij8+DQo8VHJhbnNmb3JtIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIG5hbWU9IkZsb3cgQ3l0b21ldHJ5IE1hcHBpbmciPg0KICA8RGVzY3JpcHRpb24gLz4NCiAgPFRyYW5zZm9ybVR5cGU+TWFwcGluZyBTY3JpcHQ8L1RyYW5zZm9ybVR5cGU+DQogIDxUcmFuc2Zvcm1EYXRhPg0KICAgIDxNYXBwaW5nU2NyaXB0Pg0KICAgICAgPE5vZGUgTWV0aG9kPSJSZXN1bHRTZWN0aW9uIiBUeXBlPSJSZXN1bHQgU2VjdGlvbiI+DQogICAgICAgIDxBcmd1bWVudCBOYW1lPSJzZWN0aW9uTmFtZSIgU291cmNlPSJSZXN1bHRTZWN0aW9uIiBWYWx1ZT0iUmVzU2VjdGlvbiIgLz4NCiAgICAgICAgPE5vZGUgTWV0aG9kPSJTYW1wbGVGaW5kQnlOYW1lIiBUeXBlPSJTYW1wbGUiPg0KICAgICAgICAgIDxBcmd1bWVudCBOYW1lPSJzYW1wbGVOYW1lIiBTb3VyY2U9IlBhcnNlZEl0ZW0iIFZhbHVlPSJTYW1wbGVJZFJTIiAvPg0KICAgICAgICAgIDxOb2RlIE1ldGhvZD0iVGVzdEZpbmRCeU5hbWUiIFR5cGU9IlRlc3QiPg0KICAgICAgICAgICAgPEFyZ3VtZW50IE5hbWU9InRlc3ROYW1lIiBTb3VyY2U9IlBhcnNlZEl0ZW0iIFZhbHVlPSJBbmFseXNpc0lEIiAvPg0KICAgICAgICAgICAgPEFyZ3VtZW50IE5hbWU9Im9wZXJhdG9yIiBTb3VyY2U9IkxpdGVyYWwiIFZhbHVlPSIiIC8+DQogICAgICAgICAgICA8Tm9kZSBNZXRob2Q9IlJlc3VsdExpc3RFbnRlckJ5TmFtZXMiIFR5cGU9IlJlc3VsdCBMaXN0Ij4NCiAgICAgICAgICAgICAgPEFyZ3VtZW50IE5hbWU9InJlc3VsdE5hbWUiIFNvdXJjZT0iUGFyc2VkTGlzdCIgVmFsdWU9IlJlc05hbWVzIiAvPg0KICAgICAgICAgICAgICA8QXJndW1lbnQgTmFtZT0icmVzdWx0VmFsdWUiIFNvdXJjZT0iUGFyc2VkTGlzdCIgVmFsdWU9IlJlc1ZhbHVlcyIgLz4NCiAgICAgICAgICAgICAgPE5vZGUgTWV0aG9kPSJSZXN1bHRGaWVsZEFzc2lnbiIgVHlwZT0iUmVzdWx0IEZpZWxkIEFzc2lnbiI+DQogICAgICAgICAgICAgICAgPEFyZ3VtZW50IE5hbWU9ImZpZWxkTmFtZSIgU291cmNlPSJMSU1TUmVzdWx0RmllbGQiIFZhbHVlPSJSRVNVTFRfVFlQRSIgLz4NCiAgICAgICAgICAgICAgICA8QXJndW1lbnQgTmFtZT0iZmllbGRWYWx1ZSIgU291cmNlPSJMaXRlcmFsIiBWYWx1ZT0iTiIgLz4NCiAgICAgICAgICAgICAgPC9Ob2RlPg0KICAgICAgICAgICAgPC9Ob2RlPg0KICAgICAgICAgIDwvTm9kZT4NCiAgICAgICAgPC9Ob2RlPg0KICAgICAgPC9Ob2RlPg0KICAgICAgPE1BUFBJTkdfUEFSQU1FVEVSUz4NCiAgICAgICAgPE1BUFBJTkdfUEFSQU1FVEVSIE5hbWU9IklHTk9SRV9BTExfUkVTVUxUX0VSIiBWYWx1ZT0iVFJVRSIgLz4NCiAgICAgICAgPE1BUFBJTkdfUEFSQU1FVEVSIE5hbWU9IklHTk9SRV9SRVNVTFRfRVJST1JTIiBWYWx1ZT0iVFJVRSIgLz4NCiAgICAgICAgPE1BUFBJTkdfUEFSQU1FVEVSIE5hbWU9IlJFUVVJUkVfVkFMSURfU0FNUExFIiBWYWx1ZT0iRkFMU0UiIC8+DQogICAgICAgIDxNQVBQSU5HX1BBUkFNRVRFUiBOYW1lPSJSRVFVSVJFX1ZBTElEX1RFU1QiIFZhbHVlPSJUUlVFIiAvPg0KICAgICAgPC9NQVBQSU5HX1BBUkFNRVRFUlM+DQogICAgPC9NYXBwaW5nU2NyaXB0Pg0KICA8L1RyYW5zZm9ybURhdGE+DQo8L1RyYW5zZm9ybT4=",
+          "filename": ""
+        }
+      },
+      "subOperations": []
+    }
+  ]
+}
