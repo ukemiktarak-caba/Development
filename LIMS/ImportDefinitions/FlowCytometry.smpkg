@@ -1,0 +1,60 @@
+Security Tag:C4-6E-9A-68-CE-D9-15-6E-71-19-E0-E8-FF-71-81-70-5F-6E-C1-FD
+{
+  "name": "Lab Import Definition - FlowCytometry",
+  "description": "Entity Deployment Package",
+  "Timestamp": "2024-12-13T13:54:42.036",
+  "Version": "21.2.0.0",
+  "operations": [
+    {
+      "description": "Data Check",
+      "operation": "data_check",
+      "deploy_action": "Run",
+      "icon": "INT_AUDITING",
+      "datastore": {
+        "PERSONNEL U_KEMIK   ": {
+          "keyValueItems": {
+            "entityType": "PERSONNEL",
+            "identity": "U_KEMIK   ",
+            "name": "Umut Kemiktarak"
+          }
+        },
+        "LAB_PARSING_SCRIPT FE437B38-C6BF-489B-B52D-6B821C25B36F         1": {
+          "keyValueItems": {
+            "entityType": "LAB_PARSING_SCRIPT",
+            "identity": "FE437B38-C6BF-489B-B52D-6B821C25B36F         1",
+            "name": "Flow Cytometry Parsing - MUK (v1)"
+          }
+        },
+        "LAB_MAPPING 14C0C91B-3364-46E2-BB23-A6ECEC887D0A         1": {
+          "keyValueItems": {
+            "entityType": "LAB_MAPPING",
+            "identity": "14C0C91B-3364-46E2-BB23-A6ECEC887D0A         1",
+            "name": "Flow Cytometry Mapping (v1)"
+          }
+        }
+      }
+    },
+    {
+      "description": "LAB_IMPORT_DEFINITION - FlowCytometry",
+      "operation": "default set",
+      "deploy_action": "Create",
+      "entityType": "LAB_IMPORT_DEFINITION",
+      "icon": "LE_IMPORT_DEFINITION",
+      "keys": {
+        "LAB_IMPORT_DEFINITION_ID": "D33E13D1-26BA-4DBA-A5C8-CFFEC964978B"
+      },
+      "fieldValues": {
+        "NAME": "FlowCytometry",
+        "MODIFIABLE": true,
+        "HAS_ATTACHMENTS": false,
+        "LAB_PARSING_SCRIPT_ID": "FE437B38-C6BF-489B-B52D-6B821C25B36F",
+        "LAB_PARSING_SCRIPT_VERSION": "         1",
+        "LAB_MAPPING_ID": "14C0C91B-3364-46E2-BB23-A6ECEC887D0A",
+        "LAB_MAPPING_VERSION": "         1",
+        "LAB_ALIAS_VERSION": "         0",
+        "LAB_DATA_SOURCE_VERSION": "         0"
+      },
+      "subOperations": []
+    }
+  ]
+}
