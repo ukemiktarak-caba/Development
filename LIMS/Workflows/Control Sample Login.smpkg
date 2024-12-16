@@ -1,0 +1,250 @@
+Security Tag:71-D6-9D-71-10-A8-86-05-FA-9B-42-E1-6C-47-E2-27-8C-2A-C6-FA
+{
+  "name": "Workflow - Control Sample Login",
+  "description": "Entity Deployment Package",
+  "Timestamp": "2024-12-16T17:06:40.642",
+  "Version": "21.2.0.0",
+  "operations": [
+    {
+      "description": "Data Check",
+      "operation": "data_check",
+      "deploy_action": "Run",
+      "icon": "INT_AUDITING",
+      "datastore": {
+        "ENTITY_TEMPLATE CONTROL_SAMPLE                         1": {
+          "keyValueItems": {
+            "entityType": "ENTITY_TEMPLATE",
+            "identity": "CONTROL_SAMPLE                         1",
+            "name": "Control Sample (v1)"
+          }
+        },
+        "WORKFLOW B7D5843A-2868-46C7-85F8-867EA9FA6780         1": {
+          "keyValueItems": {
+            "entityType": "WORKFLOW",
+            "identity": "B7D5843A-2868-46C7-85F8-867EA9FA6780         1",
+            "name": "Patient Sample Extended Lifecycle (v1)"
+          }
+        },
+        "PHRASE SAMP_STARTV         ": {
+          "keyValueItems": {
+            "entityType": "PHRASE",
+            "identity": "SAMP_STARTV         ",
+            "name": "V"
+          }
+        }
+      }
+    },
+    {
+      "description": "WORKFLOW - Control Sample Login (v1)",
+      "operation": "workflow set",
+      "deploy_action": "Create",
+      "entityType": "WORKFLOW",
+      "icon": "FORM_GREEN",
+      "keys": {
+        "WORKFLOW_GUID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+        "WORKFLOW_VERSION": "         1"
+      },
+      "fieldValues": {
+        "NAME": "Control Sample Login",
+        "TABLE_NAME": "SAMPLE",
+        "WORKFLOW_TYPE": "SAMPLE",
+        "MODIFIABLE": true,
+        "INCLUDE_IN_MENU": false,
+        "ACTIVE": true,
+        "HAS_ATTACHMENTS": false,
+        "APPROVAL_STATUS": "A"
+      },
+      "subOperations": [
+        {
+          "description": "WORKFLOW_NODE - Sample Login Workflow",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "FORM_GREEN",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "124DACA4-15BC-4FBF-90A0-EE00609E7650"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         1",
+            "NAME": "Sample Login Workflow",
+            "NODE_TYPE": "SAMPLE_LOGIN",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Prompt for Versioned Analysis",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "ELEMENT_FIND",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "F85B39FF-FFBA-4DC7-917A-055FF3928F01"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         2",
+            "PARENT_NODE": "124DACA4-15BC-4FBF-90A0-EE00609E7650",
+            "NAME": "Prompt for Versioned Analysis",
+            "NODE_TYPE": "PROMPT_ENTITY",
+            "PARAMETERS_EXT": "<item><key><string>CAPTION</string></key><value><string>Analysis</string></value><key><string>MESSAGE</string></key><value><string>Select Analysis</string></value><key><string>ENTITY_NAME</string></key><value><string>VERSIONED_ANALYSIS</string></value><key><string>ALWAYSPROMPT</string></key><value><string>T</string></value><key><string>VARIABLENAME</string></key><value><string>var_analysis</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_analysis_id'='[Identity]'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "42EF1059-CDFE-4A04-BC6E-0C63F36E2DE1"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         3",
+            "PARENT_NODE": "F85B39FF-FFBA-4DC7-917A-055FF3928F01",
+            "NAME": "Value 'var_analysis_id'='[Identity]'",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_analysis_id</string></value><key><string>VALUE</string></key><value><string>[Identity]</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Prompt for string variable",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_VARIABLE",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "5E188658-E37D-4FB7-8668-E5D0A45EAE24"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         4",
+            "PARENT_NODE": "124DACA4-15BC-4FBF-90A0-EE00609E7650",
+            "NAME": "Prompt for string variable",
+            "NODE_TYPE": "PROMPT_STR_VAR_NODE",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>Enter CABA Lot ID</string></value><key><string>CAPTION</string></key><value><string>CABA Lot ID</string></value><key><string>ALWAYSPROMPT</string></key><value><string>T</string></value><key><string>VARIABLENAME</string></key><value><string>var_caba_lot_id</string></value><key><string>MANDATORY</string></key><value><string>T</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('var_analysis_id') + ' - ' + WorkflowValue('var_analysis') + ' - ' + Remo",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "WINDOW_INFO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "07679AF9-5493-45ED-8D3B-53DE20454344"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         5",
+            "PARENT_NODE": "124DACA4-15BC-4FBF-90A0-EE00609E7650",
+            "NAME": "Message Box 'WorkflowValue('var_analysis_id') + ' - ' + WorkflowValue('var_analysis') + ' - ' + Remo",
+            "NODE_TYPE": "MESSAGEBOX",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('var_analysis_id') + ' - ' + WorkflowValue('var_analysis') + ' - ' + Remove(Trim(WorkflowValue('var_analysis')),   Len(Trim(WorkflowValue('var_analysis'))))</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Create 'Control Sample' Sample",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "SAMPLE_ADD",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "524170DF-2432-4DE2-A77E-BC65F74588BF"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         6",
+            "PARENT_NODE": "124DACA4-15BC-4FBF-90A0-EE00609E7650",
+            "NAME": "Create 'Control Sample' Sample",
+            "NODE_TYPE": "CREATE_SAMPLE",
+            "PARAMETERS_EXT": "<item><key><string>ID_TEXT</string></key><value><string>Upper('CONTROLS_' +  [OriginalSampleId] + '_' + [Analyte])</string></value></item>",
+            "DEFAULT_WORKFLOW_ID": "B7D5843A-2868-46C7-85F8-867EA9FA6780",
+            "ENTITY_TEMPLATE_ID": "CONTROL_SAMPLE",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set IsControl using 'True'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "8A128C1A-2137-46F2-A26E-B0C383760443"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         7",
+            "PARENT_NODE": "524170DF-2432-4DE2-A77E-BC65F74588BF",
+            "NAME": "Set IsControl using 'True'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>PROPERTY</string></key><value><string>IsControl</string></value><key><string>FORMULA</string></key><value><string>True</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Analyte using 'WorkflowValue('var_analysis_id')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "399A92BB-FA95-45F7-9C31-A6D53B06F8BC"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         8",
+            "PARENT_NODE": "524170DF-2432-4DE2-A77E-BC65F74588BF",
+            "NAME": "Set Analyte using 'WorkflowValue('var_analysis_id')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>PROPERTY</string></key><value><string>Analyte</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('var_analysis_id')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set OriginalSampleId using 'WorkflowValue('var_caba_lot_id')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "FA1D978F-444E-4406-8E84-104C3F670303"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "9A51D1E7-7575-4557-88E9-4F126D295126",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         9",
+            "PARENT_NODE": "524170DF-2432-4DE2-A77E-BC65F74588BF",
+            "NAME": "Set OriginalSampleId using 'WorkflowValue('var_caba_lot_id')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>PROPERTY</string></key><value><string>OriginalSampleId</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('var_caba_lot_id')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        }
+      ]
+    }
+  ]
+}
