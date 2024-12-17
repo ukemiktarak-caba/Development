@@ -1,8 +1,8 @@
-Security Tag:9D-69-93-72-EE-57-E4-04-7F-41-90-88-14-4C-22-90-4A-84-EF-11
+Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
 {
   "name": "Workflow - Sweeper Test Result Load - Flow",
   "description": "Entity Deployment Package",
-  "Timestamp": "2024-12-17T13:45:20.138",
+  "Timestamp": "2024-12-17T14:01:32.094",
   "Version": "21.2.0.0",
   "operations": [
     {
@@ -157,7 +157,28 @@ Security Tag:9D-69-93-72-EE-57-E4-04-7F-41-90-88-14-4C-22-90-4A-84-EF-11
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')'",
+          "description": "WORKFLOW_NODE - For All Items in Lists",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "INT_ARROW_REPEAT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "56C56851-ACF7-417E-821E-8F2495F9F273"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         7",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "For All Items in Lists",
+            "NODE_TYPE": "ALLITEMS_IN_LISTS",
+            "PARAMETERS_EXT": "<item><key><string>LISTS</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value><key><string>VARIABLE_NAMES</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -168,11 +189,11 @@ Security Tag:9D-69-93-72-EE-57-E4-04-7F-41-90-88-14-4C-22-90-4A-84-EF-11
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         7",
-            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
-            "NAME": "Message Box 'WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')'",
+            "ORDER_NUMBER": "         8",
+            "PARENT_NODE": "56C56851-ACF7-417E-821E-8F2495F9F273",
+            "NAME": "Message Box 'WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults'",
             "NODE_TYPE": "MESSAGEBOX",
-            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults')</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
