@@ -1,0 +1,183 @@
+Security Tag:9D-69-93-72-EE-57-E4-04-7F-41-90-88-14-4C-22-90-4A-84-EF-11
+{
+  "name": "Workflow - Sweeper Test Result Load - Flow",
+  "description": "Entity Deployment Package",
+  "Timestamp": "2024-12-17T13:45:20.138",
+  "Version": "21.2.0.0",
+  "operations": [
+    {
+      "description": "Data Check",
+      "operation": "data_check",
+      "deploy_action": "Run",
+      "icon": "INT_AUDITING",
+      "datastore": {}
+    },
+    {
+      "description": "WORKFLOW - Sweeper Test Result Load - Flow (v1)",
+      "operation": "workflow set",
+      "deploy_action": "Create",
+      "entityType": "WORKFLOW",
+      "icon": "TEXT_TREE",
+      "keys": {
+        "WORKFLOW_GUID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+        "WORKFLOW_VERSION": "         1"
+      },
+      "fieldValues": {
+        "NAME": "Sweeper Test Result Load - Flow",
+        "WORKFLOW_TYPE": "GENERAL",
+        "DESCRIPTION": "Enter flow cytometry results. This workflow uses results parsed by Flow Cytometry Parsing parsing script.",
+        "MODIFIABLE": true,
+        "INCLUDE_IN_MENU": false,
+        "ACTIVE": true,
+        "HAS_ATTACHMENTS": false,
+        "APPROVAL_STATUS": "A"
+      },
+      "subOperations": [
+        {
+          "description": "WORKFLOW_NODE - General Workflow",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "5B98277C-EAD3-4459-BA8E-B0321716ACF8"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         1",
+            "NAME": "General Workflow",
+            "NODE_TYPE": "GENERAL",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Prompt for Client File",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "INT_FILE_VIEW",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         2",
+            "PARENT_NODE": "5B98277C-EAD3-4459-BA8E-B0321716ACF8",
+            "NAME": "Prompt for Client File",
+            "NODE_TYPE": "LAB_FILE_SOURCE",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing - MUK'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "LE_SCRIPT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "58807CA0-8C12-4A38-BF7F-7C6F28D516E2"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         3",
+            "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
+            "NAME": "Parse with 'Flow Cytometry Parsing - MUK'",
+            "NODE_TYPE": "LAB_PARSING_SCRIPT",
+            "PARAMETERS_EXT": "<item><key><string>LAB_PARSING_SCRIPT</string></key><value><string>FE437B38-C6BF-489B-B52D-6B821C25B36F         1</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "10FD1FED-06EE-40A3-A306-C15F66F79FE4"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         4",
+            "PARENT_NODE": "58807CA0-8C12-4A38-BF7F-7C6F28D516E2",
+            "NAME": "Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+            "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
+            "PARAMETERS_EXT": "<item><key><string>WF_VAR_NAME</string></key><value><string>var_sample_id</string></value><key><string>VARIABLE_NAME</string></key><value><string>TextSectionSampleId</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - For Each Section (Store section name in 'var_section_name')",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "ELEMENTS1",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         5",
+            "PARENT_NODE": "58807CA0-8C12-4A38-BF7F-7C6F28D516E2",
+            "NAME": "For Each Section (Store section name in 'var_section_name')",
+            "NODE_TYPE": "LAB_PARSER_FOREACH_SECTION",
+            "PARAMETERS_EXT": "<item><key><string>SECTION_NAME</string></key><value><string>var_section_name</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "E055A015-64B4-4F8F-B761-7E0F5D9EE914"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         6",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+            "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
+            "PARAMETERS_EXT": "<item><key><string>VARIABLE_NAME</string></key><value><string>TextSectionSampleId</string></value><key><string>WF_VAR_NAME</string></key><value><string>var_sample_id</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "WINDOW_INFO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "CDB31203-6AD3-41D0-BA96-49F443773AEC"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         7",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Message Box 'WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')'",
+            "NODE_TYPE": "MESSAGEBOX",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('var_section_name') + ' ' +  WorkflowValue('var_sample_id')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        }
+      ]
+    }
+  ]
+}
