@@ -1,0 +1,203 @@
+Security Tag:3F-1E-7B-E7-52-7B-DF-FB-9B-82-D2-7A-EA-6E-E3-65-CE-C7-73-D0
+{
+  "name": "Workflow - Test General Workflow MUK",
+  "description": "Entity Deployment Package",
+  "Timestamp": "2024-12-18T14:51:28.173",
+  "Version": "21.2.0.0",
+  "operations": [
+    {
+      "description": "Data Check",
+      "operation": "data_check",
+      "deploy_action": "Run",
+      "icon": "INT_AUDITING",
+      "datastore": {}
+    },
+    {
+      "description": "WORKFLOW - Test General Workflow MUK (v1)",
+      "operation": "workflow set",
+      "deploy_action": "Create",
+      "entityType": "WORKFLOW",
+      "icon": "TEXT_TREE",
+      "keys": {
+        "WORKFLOW_GUID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+        "WORKFLOW_VERSION": "         1"
+      },
+      "fieldValues": {
+        "NAME": "Test General Workflow MUK",
+        "WORKFLOW_TYPE": "GENERAL",
+        "MODIFIABLE": true,
+        "INCLUDE_IN_MENU": false,
+        "ACTIVE": true,
+        "HAS_ATTACHMENTS": false,
+        "APPROVAL_STATUS": "A"
+      },
+      "subOperations": [
+        {
+          "description": "WORKFLOW_NODE - General Workflow",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "653F3FA1-4545-424A-A635-692FE8FD4405"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         1",
+            "NAME": "General Workflow",
+            "NODE_TYPE": "GENERAL",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Code for returning the test with the maximum test number",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "0F5078B6-6CF6-4569-BC4A-8108FD3DF665"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         2",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Code for returning the test with the maximum test number",
+            "NODE_TYPE": "COMMENT",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_test_list'='GetEntities('TEST', 'Sample',  WorkflowValue('var_sample_id'))'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "CC32EE1C-16FD-4045-91E4-37979F507E02"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         3",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Value 'var_test_list'='GetEntities('TEST', 'Sample',  WorkflowValue('var_sample_id'))'",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_test_list</string></value><key><string>VALUE</string></key><value><string>GetEntities('TEST', 'Sample',  WorkflowValue('var_sample_id'))</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_test_list_count'='CollectionCount(GetEntities('TEST', 'Sample',  WorkflowValue('var_sampl",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "0FE4D2CF-155A-41AE-809A-440E00789DA5"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         4",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Value 'var_test_list_count'='CollectionCount(GetEntities('TEST', 'Sample',  WorkflowValue('var_sampl",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_test_list_count</string></value><key><string>VALUE</string></key><value><string>CollectionCount(GetEntities('TEST', 'Sample',  WorkflowValue('var_sample_id')))</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_sample_id_text'=''CONTROLS_LOT4_FLOWCYTO''",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "2C194626-8C6C-4B74-B836-8D3E4F38BDA2"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         5",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Value 'var_sample_id_text'=''CONTROLS_LOT4_FLOWCYTO''",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_sample_id_text</string></value><key><string>VALUE</string></key><value><string>'CONTROLS_LOT4_FLOWCYTO'</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_last_test_count'='CollectionCount(GetEntities('TEST', 'sample.id_text',  WorkflowValue('v",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "48A93103-E55E-4A11-AD63-BB13C2DB22B7"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         6",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Value 'var_last_test_count'='CollectionCount(GetEntities('TEST', 'sample.id_text',  WorkflowValue('v",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_last_test_count</string></value><key><string>VALUE</string></key><value><string>CollectionCount(GetEntities('TEST', 'sample.id_text',  WorkflowValue('var_sample_id_text')))</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_last_test_number'='GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "4D887672-2BA6-44FF-8D2E-C77DDEE50D6A"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         7",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Value 'var_last_test_number'='GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_last_test_number</string></value><key><string>VALUE</string></key><value><string>GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue('var_sample_id_text')+','+WorkflowValue('var_last_test_count')), 'test_number')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('var_last_test_number')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "WINDOW_INFO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "298E6A32-8C0F-4BAE-A9C2-0923D444B84F"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "581EB549-48C8-4B53-9FDA-26998420AA59",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         8",
+            "PARENT_NODE": "653F3FA1-4545-424A-A635-692FE8FD4405",
+            "NAME": "Message Box 'WorkflowValue('var_last_test_number')'",
+            "NODE_TYPE": "MESSAGEBOX",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('var_last_test_number')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        }
+      ]
+    }
+  ]
+}
