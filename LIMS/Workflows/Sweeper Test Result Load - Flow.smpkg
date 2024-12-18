@@ -1,8 +1,8 @@
-Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
+Security Tag:ED-49-64-8A-F1-73-EA-70-C9-91-6C-39-4F-9D-3D-5B-B4-31-15-C8
 {
   "name": "Workflow - Sweeper Test Result Load - Flow",
   "description": "Entity Deployment Package",
-  "Timestamp": "2024-12-17T14:01:32.094",
+  "Timestamp": "2024-12-18T10:08:17.43",
   "Version": "21.2.0.0",
   "operations": [
     {
@@ -73,6 +73,27 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
           "subOperations": []
         },
         {
+          "description": "WORKFLOW_NODE - Call 'Add Result Subworkflow'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE_PLAY",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1E5F53A5-BEB4-4824-8009-66AC7550CE33"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         3",
+            "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
+            "NAME": "Call 'Add Result Subworkflow'",
+            "NODE_TYPE": "CALL_SUB_WORKFLOW",
+            "PARAMETERS_EXT": "<item><key><string>SUBWORKFLOW_NAME</string></key><value><string>Add Result Subworkflow</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
           "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing - MUK'",
           "operation": "default set",
           "deploy_action": "Create",
@@ -84,33 +105,12 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         3",
+            "ORDER_NUMBER": "         4",
             "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
             "NAME": "Parse with 'Flow Cytometry Parsing - MUK'",
             "NODE_TYPE": "LAB_PARSING_SCRIPT",
             "PARAMETERS_EXT": "<item><key><string>LAB_PARSING_SCRIPT</string></key><value><string>FE437B38-C6BF-489B-B52D-6B821C25B36F         1</string></value></item>",
             "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "BOX_INTO",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "10FD1FED-06EE-40A3-A306-C15F66F79FE4"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         4",
-            "PARENT_NODE": "58807CA0-8C12-4A38-BF7F-7C6F28D516E2",
-            "NAME": "Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
-            "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
-            "PARAMETERS_EXT": "<item><key><string>WF_VAR_NAME</string></key><value><string>var_sample_id</string></value><key><string>VARIABLE_NAME</string></key><value><string>TextSectionSampleId</string></value></item>",
-            "ENABLED": false
           },
           "subOperations": []
         },
@@ -142,7 +142,7 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
           "entityType": "WORKFLOW_NODE",
           "icon": "BOX_INTO",
           "keys": {
-            "WORKFLOW_NODE_GUID": "E055A015-64B4-4F8F-B761-7E0F5D9EE914"
+            "WORKFLOW_NODE_GUID": "10FD1FED-06EE-40A3-A306-C15F66F79FE4"
           },
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
@@ -151,8 +151,49 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
             "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
+            "PARAMETERS_EXT": "<item><key><string>WF_VAR_NAME</string></key><value><string>var_sample_id</string></value><key><string>VARIABLE_NAME</string></key><value><string>TextSectionSampleId</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "E055A015-64B4-4F8F-B761-7E0F5D9EE914"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         7",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Set workflow variable 'var_sample_id' from 'TextSectionSampleId'",
+            "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
             "PARAMETERS_EXT": "<item><key><string>VARIABLE_NAME</string></key><value><string>TextSectionSampleId</string></value><key><string>WF_VAR_NAME</string></key><value><string>var_sample_id</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Check if the sample has at flow test added",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1ACBD156-B2DB-4B56-BD81-9EB71DC48EF0"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         8",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Check if the sample has at flow test added",
+            "NODE_TYPE": "COMMENT",
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -168,17 +209,17 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         7",
+            "ORDER_NUMBER": "         9",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "For All Items in Lists",
             "NODE_TYPE": "ALLITEMS_IN_LISTS",
-            "PARAMETERS_EXT": "<item><key><string>LISTS</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value><key><string>VARIABLE_NAMES</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>LISTS</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value><key><string>VARIABLE_NAMES</string></key><value><string>ResultName,ResultValue</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults'",
+          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('ResultName') + ' ' +  WorkflowValue('ResultValue')'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -189,12 +230,136 @@ Security Tag:1F-06-F7-38-93-08-BC-4E-0B-F6-D8-27-21-3F-7E-60-83-8C-43-5C
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         8",
+            "ORDER_NUMBER": "        10",
             "PARENT_NODE": "56C56851-ACF7-417E-821E-8F2495F9F273",
-            "NAME": "Message Box 'WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults'",
+            "NAME": "Message Box 'WorkflowValue('ResultName') + ' ' +  WorkflowValue('ResultValue')'",
             "NODE_TYPE": "MESSAGEBOX",
-            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('ListSectionColumnNames') + ' ' +  WorkflowValue('ListSectionTestResults')</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('ResultName') + ' ' +  WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Call 'Add Result Subworkflow'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE_PLAY",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "D6AECBAB-F0B6-4812-AB33-B53EEE405B48"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        11",
+            "PARENT_NODE": "56C56851-ACF7-417E-821E-8F2495F9F273",
+            "NAME": "Call 'Add Result Subworkflow'",
+            "NODE_TYPE": "CALL_SUB_WORKFLOW",
+            "PARAMETERS_EXT": "<item><key><string>SUBWORKFLOW_NAME</string></key><value><string>Add Result Subworkflow</string></value></item>",
             "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Add Result Subworkflow",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "39549259-775A-4079-8BF2-A6F2BF183178"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        12",
+            "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
+            "NAME": "Add Result Subworkflow",
+            "NODE_TYPE": "SUB_WORKFLOW",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Select '240' Test",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "ELEMENT_FIND",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1749211C-B861-48D7-BC56-62FBF80CB70C"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        13",
+            "PARENT_NODE": "39549259-775A-4079-8BF2-A6F2BF183178",
+            "NAME": "Select '240' Test",
+            "NODE_TYPE": "SELECT_ENTITY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>ENTITY_ID</string></key><value><string>240</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Put Test Results",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "INT_RESULT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "889ED4B4-C373-42F2-94CE-734E93129E37"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        14",
+            "PARENT_NODE": "1749211C-B861-48D7-BC56-62FBF80CB70C",
+            "NAME": "Put Test Results",
+            "NODE_TYPE": "PUT_TEST_RESULTS",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Store Component WorkflowValue('ResultName')",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "INT_RESULT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "0748A70B-68EE-4C06-B085-A5AFDB500AB8"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        15",
+            "PARENT_NODE": "889ED4B4-C373-42F2-94CE-734E93129E37",
+            "NAME": "Store Component WorkflowValue('ResultName')",
+            "NODE_TYPE": "PUT_RESULT",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>COMPONENT_NAME</string></key><value><string>WorkflowValue('ResultName')</string></value><key><string>VALUE</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box '[TestNumber]'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "WINDOW_INFO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "FB6C34BE-63D8-4E68-B4F0-376AE709D3EA"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        16",
+            "PARENT_NODE": "1749211C-B861-48D7-BC56-62FBF80CB70C",
+            "NAME": "Message Box '[TestNumber]'",
+            "NODE_TYPE": "MESSAGEBOX",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>[TestNumber]</string></value></item>",
+            "ENABLED": false
           },
           "subOperations": []
         }
