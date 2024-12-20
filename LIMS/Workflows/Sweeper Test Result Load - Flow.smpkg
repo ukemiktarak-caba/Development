@@ -1,8 +1,8 @@
-Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
+Security Tag:CD-73-7F-26-00-A3-21-33-F9-18-27-D1-2C-C0-2D-5B-A6-E1-C8-E0
 {
   "name": "Workflow - Sweeper Test Result Load - Flow",
   "description": "Entity Deployment Package",
-  "Timestamp": "2024-12-19T14:48:35.127",
+  "Timestamp": "2024-12-20T16:58:40.24",
   "Version": "21.2.0.0",
   "operations": [
     {
@@ -15,7 +15,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "keyValueItems": {
             "entityType": "WORKFLOW_ACTION_TYPE",
             "identity": "SAMPLE                        SAMP_ADD_TEST                 ",
-            "name": "Sample Add Test to Control"
+            "name": "Sample Add Test to Control-TO-BE-DELETED"
           }
         },
         "PHRASE RESL_STAT E         ": {
@@ -62,6 +62,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "         1",
             "NAME": "General Workflow",
+            "DESCRIPTION": "Workflow to load flow cytometry results to regular and control samples. Note that this script always adds a new test to a regular sample even if there is already a test with results exist.",
             "NODE_TYPE": "GENERAL",
             "ENABLED": true
           },
@@ -130,6 +131,26 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
+          "description": "WORKFLOW_NODE - Capture sample id text and sample id numeric",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "2896C2EB-4EE2-44AD-87DF-400E7DBAE63B"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         5",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Capture sample id text and sample id numeric",
+            "NODE_TYPE": "COMMENT",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
           "description": "WORKFLOW_NODE - Set workflow variable 'var_sample_id_text' from 'TextSectionSampleId'",
           "operation": "default set",
           "deploy_action": "Create",
@@ -141,7 +162,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         5",
+            "ORDER_NUMBER": "         6",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "Set workflow variable 'var_sample_id_text' from 'TextSectionSampleId'",
             "NODE_TYPE": "LAB_PARSER_SET_WF_VAR",
@@ -162,11 +183,31 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         6",
+            "ORDER_NUMBER": "         7",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "Value 'var_sample_id_numeric'='GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_t",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
             "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_sample_id_numeric</string></value><key><string>VALUE</string></key><value><string>GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Check if there is a test created for the sample",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "BDEF8AA7-7727-45FA-9ED7-6D9570209419"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "         8",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Check if there is a test created for the sample",
+            "NODE_TYPE": "COMMENT",
             "ENABLED": true
           },
           "subOperations": []
@@ -183,7 +224,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         7",
+            "ORDER_NUMBER": "         9",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -193,22 +234,22 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - If 'Not [IsControl]' then",
+          "description": "WORKFLOW_NODE - Value 'var_available_test_number'='0'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
-          "icon": "CHECK2",
+          "icon": "BOX_INTO",
           "keys": {
-            "WORKFLOW_NODE_GUID": "B17D3CAF-97C3-4C68-A0DA-45315649FF85"
+            "WORKFLOW_NODE_GUID": "42F25237-56C9-4259-99AE-4A7B034B608B"
           },
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         8",
+            "ORDER_NUMBER": "        10",
             "PARENT_NODE": "26442719-E8C7-46E9-9C83-59CBCAB60E78",
-            "NAME": "If 'Not [IsControl]' then",
-            "NODE_TYPE": "FORMULA_CONDITION",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>FORMULA</string></key><value><string>Not [IsControl]</string></value></item>",
+            "NAME": "Value 'var_available_test_number'='0'",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_available_test_number</string></value><key><string>VALUE</string></key><value><string>0</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -225,8 +266,8 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "         9",
-            "PARENT_NODE": "B17D3CAF-97C3-4C68-A0DA-45315649FF85",
+            "ORDER_NUMBER": "        11",
+            "PARENT_NODE": "26442719-E8C7-46E9-9C83-59CBCAB60E78",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>CHILDREN_PROPERTY</string></key><value><string>Tests</string></value></item>",
@@ -246,7 +287,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        10",
+            "ORDER_NUMBER": "        12",
             "PARENT_NODE": "BF10A6BC-04A0-4DBB-8B22-3FC6F8204C85",
             "NAME": "If '[Analysis.Identity] == 'FLOWCYTO' And [Status]  == 'V'  And WorkflowValue('var_available_test_nu",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -267,7 +308,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        11",
+            "ORDER_NUMBER": "        13",
             "PARENT_NODE": "FC6CE4D2-F5AF-463D-AE89-2B97B46CE776",
             "NAME": "Value 'var_available_test_number'='[TestNumber]'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -277,49 +318,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Value 'var_available_test_number'='0'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "BOX_INTO",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "42F25237-56C9-4259-99AE-4A7B034B608B"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        12",
-            "PARENT_NODE": "26442719-E8C7-46E9-9C83-59CBCAB60E78",
-            "NAME": "Value 'var_available_test_number'='0'",
-            "NODE_TYPE": "SET_WORKFLOW_VALUE",
-            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_available_test_number</string></value><key><string>VALUE</string></key><value><string>0</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Message Box 'WorkflowValue('var_sample_id_numeric')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "WINDOW_INFO",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "082387F0-B82C-4853-9FE8-D57A3B60195D"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        13",
-            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
-            "NAME": "Message Box 'WorkflowValue('var_sample_id_numeric')'",
-            "NODE_TYPE": "MESSAGEBOX",
-            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>WorkflowValue('var_sample_id_numeric')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Add a flow test to the sample",
+          "description": "WORKFLOW_NODE - Add a flow test to the sample if it is a control sample or no test is created for the sample",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -332,7 +331,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "        14",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
-            "NAME": "Add a flow test to the sample",
+            "NAME": "Add a flow test to the sample if it is a control sample or no test is created for the sample",
             "NODE_TYPE": "COMMENT",
             "ENABLED": true
           },
@@ -355,6 +354,27 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
             "NAME": "Value 'var_last_test_count'='CollectionCount(GetEntities('TEST', 'sample.id_text',  WorkflowValue('v",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
             "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_last_test_count</string></value><key><string>VALUE</string></key><value><string>CollectionCount(GetEntities('TEST', 'sample.id_text',  WorkflowValue('var_sample_id_text')))</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Message Box ''Oldu''",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "WINDOW_INFO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "23FA1808-3147-441B-A985-2AD2F12C9B65"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        16",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Message Box ''Oldu''",
+            "NODE_TYPE": "MESSAGEBOX",
+            "PARAMETERS_EXT": "<item><key><string>MESSAGE</string></key><value><string>'Oldu'</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -371,7 +391,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        16",
+            "ORDER_NUMBER": "        17",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "If 'WorkflowValue('var_available_test_number') == '0'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -392,11 +412,31 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        17",
+            "ORDER_NUMBER": "        18",
             "PARENT_NODE": "08367730-D991-427D-BD83-B5AAF6F55EB7",
             "NAME": "Call 'Add Test to Sample'",
             "NODE_TYPE": "CALL_SUB_WORKFLOW",
             "PARAMETERS_EXT": "<item><key><string>SUBWORKFLOW_NAME</string></key><value><string>Add Test to Sample</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Enter results from the parsing script",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1377E379-4FED-4728-A8FD-70DB2EEFF5B9"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        19",
+            "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
+            "NAME": "Enter results from the parsing script",
+            "NODE_TYPE": "COMMENT",
             "ENABLED": true
           },
           "subOperations": []
@@ -413,7 +453,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        18",
+            "ORDER_NUMBER": "        20",
             "PARENT_NODE": "F1A9CED8-7645-4386-BAF1-1031E94A1BE9",
             "NAME": "For All Items in Lists",
             "NODE_TYPE": "ALLITEMS_IN_LISTS",
@@ -434,7 +474,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        19",
+            "ORDER_NUMBER": "        21",
             "PARENT_NODE": "56C56851-ACF7-417E-821E-8F2495F9F273",
             "NAME": "Call 'Add Result' Subworkflow",
             "NODE_TYPE": "CALL_SUB_WORKFLOW",
@@ -455,7 +495,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        20",
+            "ORDER_NUMBER": "        22",
             "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
             "NAME": "Add Test to Sample",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -464,7 +504,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Select 'GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')' S",
+          "description": "WORKFLOW_NODE - Select 'WorkflowValue('var_sample_id_numeric')' Sample",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -475,11 +515,11 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        21",
+            "ORDER_NUMBER": "        23",
             "PARENT_NODE": "ECB1AD4A-C1B0-4FD0-ADEF-9F97462A4657",
-            "NAME": "Select 'GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')' S",
+            "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>ENTITY_ID</string></key><value><string>GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')</string></value><key><string>ADD_TO_TRANSACTION</string></key><value><string>T</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>ENTITY_ID</string></key><value><string>WorkflowValue('var_sample_id_numeric')</string></value><key><string>ADD_TO_TRANSACTION</string></key><value><string>T</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -496,11 +536,32 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        22",
+            "ORDER_NUMBER": "        24",
             "PARENT_NODE": "1B3A6C33-1EF9-47FE-A62F-0AE2EC935C1F",
             "NAME": "Perform 'Sample Add Test to Control' on Sample",
             "NODE_TYPE": "PERFORM_ACTION",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>ACTION_TYPE</string></key><value><string>SAMPLE                        SAMP_ADD_TEST                 </string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Create Test by Formula",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEST_ADD",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "20A8621D-A813-4F77-9FBE-B2C5E293B0EE"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        25",
+            "PARENT_NODE": "1B3A6C33-1EF9-47FE-A62F-0AE2EC935C1F",
+            "NAME": "Create Test by Formula",
+            "NODE_TYPE": "CREATE_TEST_FORM",
+            "PARAMETERS_EXT": "<item><key><string>ANALYSIS</string></key><value><string>'FLOWCYTO'</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -517,7 +578,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        23",
+            "ORDER_NUMBER": "        26",
             "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
             "NAME": "Add Result",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -526,69 +587,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Select 'GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue('var_sample_id_text')",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "ELEMENT_FIND",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "1749211C-B861-48D7-BC56-62FBF80CB70C"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        24",
-            "PARENT_NODE": "39549259-775A-4079-8BF2-A6F2BF183178",
-            "NAME": "Select 'GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue('var_sample_id_text')",
-            "NODE_TYPE": "SELECT_ENTITY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>ENTITY_ID</string></key><value><string>GetValue(GetEntity('TEST', 'sample.id_text,test_count',  WorkflowValue('var_sample_id_text')+','+WorkflowValue('var_last_test_count')), 'test_number')</string></value><key><string>ADD_TO_TRANSACTION</string></key><value><string>T</string></value></item>",
-            "ENABLED": false
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Put Test Results",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "INT_RESULT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "889ED4B4-C373-42F2-94CE-734E93129E37"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        25",
-            "PARENT_NODE": "1749211C-B861-48D7-BC56-62FBF80CB70C",
-            "NAME": "Put Test Results",
-            "NODE_TYPE": "PUT_TEST_RESULTS",
-            "ENABLED": false
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Store Component WorkflowValue('ResultName')",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "INT_RESULT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "0748A70B-68EE-4C06-B085-A5AFDB500AB8"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        26",
-            "PARENT_NODE": "889ED4B4-C373-42F2-94CE-734E93129E37",
-            "NAME": "Store Component WorkflowValue('ResultName')",
-            "NODE_TYPE": "PUT_RESULT",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>COMPONENT_NAME</string></key><value><string>WorkflowValue('ResultName')</string></value><key><string>VALUE</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": false
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Select 'GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')' S",
+          "description": "WORKFLOW_NODE - Select 'WorkflowValue('var_sample_id_numeric')' Sample",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -601,15 +600,15 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "        27",
             "PARENT_NODE": "39549259-775A-4079-8BF2-A6F2BF183178",
-            "NAME": "Select 'GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')' S",
+            "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>ENTITY_ID</string></key><value><string>GetValue(GetEntity('SAMPLE', 'IdText', WorkflowValue('var_sample_id_text')), 'IdNumeric')</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>ENTITY_ID</string></key><value><string>WorkflowValue('var_sample_id_numeric')</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Condition Set",
+          "description": "WORKFLOW_NODE - Check if the test has just been created (id not created)",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -622,7 +621,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "        28",
             "PARENT_NODE": "36A52879-544B-4F06-B499-AD570B330A51",
-            "NAME": "Condition Set",
+            "NAME": "Check if the test has just been created (id not created)",
             "NODE_TYPE": "CONDITION_SET",
             "ENABLED": true
           },
@@ -712,254 +711,22 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Create Result",
+          "description": "WORKFLOW_NODE - Call 'Create Result Subworkflow'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
-          "icon": "ELEMENT_ADD",
+          "icon": "TEXT_TREE_PLAY",
           "keys": {
-            "WORKFLOW_NODE_GUID": "86FB8EC5-9855-46EB-8568-D32E6A77DE13"
+            "WORKFLOW_NODE_GUID": "98596F02-902D-455B-A039-131FB8898CF0"
           },
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "        33",
             "PARENT_NODE": "3FC79A02-A509-4165-B636-514D9676785B",
-            "NAME": "Create Result",
-            "DESCRIPTION": "Create result using Create Entity as test creation and resutl entry happen in separate transactions",
-            "NODE_TYPE": "CREATE_ENTITY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Link TestNumber using Current",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "LINK",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "A805EA9B-0D24-469F-AE6F-2220FCF52164"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        34",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Link TestNumber using Current",
-            "NODE_TYPE": "LINK_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>TestNumber</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set ResultName using 'WorkflowValue('ResultName')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "3FADEBBD-C128-47AF-BC16-026C5F4B56CF"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        35",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set ResultName using 'WorkflowValue('ResultName')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultName</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultName')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Value using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "8AFE8644-19FD-49F0-84A7-50EE5C503800"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        36",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set Value using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Value</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set RawResult using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "50294210-5585-4169-8A39-D7932042D483"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        37",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set RawResult using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>RawResult</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Text using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "1DA2BEE2-7301-4D94-8316-995265EE8276"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        38",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set Text using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Text</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set ResultType to 'N'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "441BF45B-B4B0-4CA9-A33F-75E237112E7B"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        39",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set ResultType to 'N'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultType</string></value><key><string>VALUE</string></key><value><string>N</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set EnteredBy using 'Operator()'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "74107677-1BD2-4784-AF6E-006874256EA6"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        40",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set EnteredBy using 'Operator()'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredBy</string></value><key><string>FORMULA</string></key><value><string>Operator()</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set EnteredOn using 'ClientNow()'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "11F8009B-DDFE-4925-9215-ECDD47942989"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        41",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set EnteredOn using 'ClientNow()'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredOn</string></value><key><string>FORMULA</string></key><value><string>ClientNow()</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Status to 'Entered'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "A6F8A219-96A8-4E08-89A3-70BACE932CE4"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        42",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set Status to 'Entered'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Status</string></value><key><string>VALUE</string></key><value><string>E</string></value></item>",
-            "ENABLED": false
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Places to '-1'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "11CAA94C-A6DE-4F9D-9B0A-D5831C46B3AA"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        43",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Set Places to '-1'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Places</string></value><key><string>VALUE</string></key><value><string>-1</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Add Result to transaction",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "INT_COMMIT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "4E7D9285-F19F-4D1D-AC6F-B478C5B2F3C3"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        44",
-            "PARENT_NODE": "86FB8EC5-9855-46EB-8568-D32E6A77DE13",
-            "NAME": "Add Result to transaction",
-            "NODE_TYPE": "ADD_TO_TRANSACTION",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
+            "NAME": "Call 'Create Result Subworkflow'",
+            "NODE_TYPE": "CALL_SUB_WORKFLOW",
+            "PARAMETERS_EXT": "<item><key><string>SUBWORKFLOW_NAME</string></key><value><string>Create Result Subworkflow</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -976,7 +743,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        45",
+            "ORDER_NUMBER": "        34",
             "PARENT_NODE": "CF237319-B943-4F42-AF9E-2AF8EC5C9C3D",
             "NAME": "Else",
             "NODE_TYPE": "ELSE",
@@ -996,7 +763,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        46",
+            "ORDER_NUMBER": "        35",
             "PARENT_NODE": "E415D40F-B8D2-43CA-A81F-BCD632C88F40",
             "NAME": "Select 'WorkflowValue('var_available_test_number')' Test",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -1006,253 +773,22 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Create Result",
+          "description": "WORKFLOW_NODE - Call 'Create Result Subworkflow'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
-          "icon": "ELEMENT_ADD",
+          "icon": "TEXT_TREE_PLAY",
           "keys": {
-            "WORKFLOW_NODE_GUID": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84"
+            "WORKFLOW_NODE_GUID": "8A361898-8CAF-4B47-AACA-93F64DF5557A"
           },
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        47",
+            "ORDER_NUMBER": "        36",
             "PARENT_NODE": "81D67F51-2786-4007-A1BC-6556F6943F2D",
-            "NAME": "Create Result",
-            "NODE_TYPE": "CREATE_ENTITY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Link TestNumber using Current",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "LINK",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "2B4B3897-7AE2-48EE-B0EE-9F5B25C29293"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        48",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Link TestNumber using Current",
-            "NODE_TYPE": "LINK_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>TestNumber</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set ResultName using 'WorkflowValue('ResultName')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "36D1B0CF-2C94-46FC-8EBC-BE23C8124A61"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        49",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set ResultName using 'WorkflowValue('ResultName')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultName</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultName')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Value using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "3532CB89-1606-4F9F-AD1D-FDFE374533E4"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        50",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set Value using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Value</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set RawResult using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "470179ED-4A0A-4D84-BF55-662EC77544DD"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        51",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set RawResult using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>RawResult</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Text using 'WorkflowValue('ResultValue')'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "5287D0B5-9C1D-492E-AC86-3F7586CF2B0C"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        52",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set Text using 'WorkflowValue('ResultValue')'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Text</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set ResultType to 'N'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "8E76E5A6-3E19-46B0-AB14-B956FD39BC28"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        53",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set ResultType to 'N'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultType</string></value><key><string>VALUE</string></key><value><string>N</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set EnteredBy using 'Operator()'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "C5657031-4E01-457E-BBFA-1E64BD9CDFF4"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        54",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set EnteredBy using 'Operator()'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredBy</string></value><key><string>FORMULA</string></key><value><string>Operator()</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set EnteredOn using 'ClientNow()'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "85D90A13-65CE-4863-A6EF-B1DD21C5E103"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        55",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set EnteredOn using 'ClientNow()'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredOn</string></value><key><string>FORMULA</string></key><value><string>ClientNow()</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Status to 'Entered'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "40652CFB-F1A2-48D8-8C11-341595598137"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        56",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set Status to 'Entered'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Status</string></value><key><string>VALUE</string></key><value><string>E</string></value></item>",
-            "ENABLED": false
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Set Places to '-1'",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "CONTRACT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "40EB55F9-66F3-433A-932E-C27C26B8F544"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        57",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Set Places to '-1'",
-            "NODE_TYPE": "SET_ENTITY_PROPERTY",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Places</string></value><key><string>VALUE</string></key><value><string>-1</string></value></item>",
-            "ENABLED": true
-          },
-          "subOperations": []
-        },
-        {
-          "description": "WORKFLOW_NODE - Add Result to transaction",
-          "operation": "default set",
-          "deploy_action": "Create",
-          "entityType": "WORKFLOW_NODE",
-          "icon": "INT_COMMIT",
-          "keys": {
-            "WORKFLOW_NODE_GUID": "0F7C1F82-C38B-4F7C-8428-60732BAB3135"
-          },
-          "fieldValues": {
-            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
-            "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        58",
-            "PARENT_NODE": "3D0CF890-B2A7-4FC1-9F9F-AFABEF792D84",
-            "NAME": "Add Result to transaction",
-            "NODE_TYPE": "ADD_TO_TRANSACTION",
-            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
+            "NAME": "Call 'Create Result Subworkflow'",
+            "NODE_TYPE": "CALL_SUB_WORKFLOW",
+            "PARAMETERS_EXT": "<item><key><string>SUBWORKFLOW_NAME</string></key><value><string>Create Result Subworkflow</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -1269,7 +805,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        59",
+            "ORDER_NUMBER": "        37",
             "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
             "NAME": "Find Available Test",
             "DESCRIPTION": "Check if there is already a test without results assigned to the sample",
@@ -1290,7 +826,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        60",
+            "ORDER_NUMBER": "        38",
             "PARENT_NODE": "E7CE904E-B36E-4E87-AD5E-F6E0C1AFEE2A",
             "NAME": "Select 'WorkflowValue('var_sample_id_text')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -1311,7 +847,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        61",
+            "ORDER_NUMBER": "        39",
             "PARENT_NODE": "B039EA02-9C8E-498C-B43A-EA51637E1E9E",
             "NAME": "If 'Not [IsControl]' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1332,7 +868,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        62",
+            "ORDER_NUMBER": "        40",
             "PARENT_NODE": "B920CB2E-051E-4EFC-B935-F06A2860AE3A",
             "NAME": "Value 'var_available_test_number'='0'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1353,7 +889,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        63",
+            "ORDER_NUMBER": "        41",
             "PARENT_NODE": "B920CB2E-051E-4EFC-B935-F06A2860AE3A",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
@@ -1374,7 +910,7 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        64",
+            "ORDER_NUMBER": "        42",
             "PARENT_NODE": "60549699-06C4-41FA-9D84-9408BCD38945",
             "NAME": "If '[Analysis.Identity] == 'FLOWCYTO' And [Status]  == 'V'  And WorkflowValue('var_available_test_nu",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1395,11 +931,283 @@ Security Tag:D7-AE-6E-00-74-A5-1C-C0-91-94-0F-D7-D1-1D-EC-03-0D-6D-75-CF
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        65",
+            "ORDER_NUMBER": "        43",
             "PARENT_NODE": "AA291723-ABE6-4A61-88E9-7CBD5B6F59D5",
             "NAME": "Value 'var_available_test_number'='[TestNumber]'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
             "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_available_test_number</string></value><key><string>VALUE</string></key><value><string>[TestNumber]</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Create Result Subworkflow",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "TEXT_TREE",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "27ED36BC-9E65-4526-BAB5-EB7A99D894C0"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        44",
+            "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
+            "NAME": "Create Result Subworkflow",
+            "NODE_TYPE": "SUB_WORKFLOW",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Create Result",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "ELEMENT_ADD",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1F4048CC-9F81-4E68-B032-13EB25C7342C"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        45",
+            "PARENT_NODE": "27ED36BC-9E65-4526-BAB5-EB7A99D894C0",
+            "NAME": "Create Result",
+            "NODE_TYPE": "CREATE_ENTITY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Link TestNumber using Current",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "LINK",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "F4C283BB-CE93-4068-9F0E-4191F76F3E7D"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        46",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Link TestNumber using Current",
+            "NODE_TYPE": "LINK_PROPERTY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>TestNumber</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set ResultName using 'WorkflowValue('ResultName')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "6EFC2FA9-F831-4E2F-894F-F52381305E7E"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        47",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set ResultName using 'WorkflowValue('ResultName')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultName</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultName')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Value using 'WorkflowValue('ResultValue')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "1F567A06-CB5B-4A2E-882A-93282071A23D"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        48",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set Value using 'WorkflowValue('ResultValue')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Value</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set RawResult using 'WorkflowValue('ResultValue')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "F87CEB2A-F5DC-4BA1-8891-ED5D2CDEBA9D"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        49",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set RawResult using 'WorkflowValue('ResultValue')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>RawResult</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Text using 'WorkflowValue('ResultValue')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "8A93C3CB-AC48-4EC6-A80A-4EE924C31DF8"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        50",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set Text using 'WorkflowValue('ResultValue')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Text</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set ResultType to 'N'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "2EE57584-61E1-488C-8C16-7861A9EC1FAB"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        51",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set ResultType to 'N'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>ResultType</string></value><key><string>VALUE</string></key><value><string>N</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set EnteredBy using 'Operator()'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "AAD3E609-2031-4BAA-91EF-401671E74CF3"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        52",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set EnteredBy using 'Operator()'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredBy</string></value><key><string>FORMULA</string></key><value><string>Operator()</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set EnteredOn using 'ClientNow()'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "D3B7A2EC-F258-4827-8FFF-A4A77E7414B7"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        53",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set EnteredOn using 'ClientNow()'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>EnteredOn</string></value><key><string>FORMULA</string></key><value><string>ClientNow()</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Status to 'Entered'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "D05DE615-7B29-4350-9B2E-C934B45C9F90"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        54",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set Status to 'Entered'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Status</string></value><key><string>VALUE</string></key><value><string>E</string></value></item>",
+            "ENABLED": false
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Places to '-1'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "A5C94CF9-BA14-4526-8B89-F5C919B6658F"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        55",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Set Places to '-1'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Places</string></value><key><string>VALUE</string></key><value><string>-1</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Add Result to transaction",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "INT_COMMIT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "83CC58D6-27A7-4445-9AB5-D57ADCB0EC32"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        56",
+            "PARENT_NODE": "1F4048CC-9F81-4E68-B032-13EB25C7342C",
+            "NAME": "Add Result to transaction",
+            "NODE_TYPE": "ADD_TO_TRANSACTION",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
