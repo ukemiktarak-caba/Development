@@ -1,8 +1,8 @@
-Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
+Security Tag:AD-15-C3-7E-B7-94-6A-B7-EB-20-D5-D3-E0-14-02-FA-CC-C3-12-45
 {
   "name": "Workflow - Sweeper Test Result Load - Flow",
   "description": "Entity Deployment Package",
-  "Timestamp": "2024-12-23T10:54:51.053",
+  "Timestamp": "2025-01-07T11:14:26.577",
   "Version": "21.2.0.0",
   "operations": [
     {
@@ -82,7 +82,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing - MUK'",
+          "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -95,7 +95,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "         3",
             "PARENT_NODE": "4D5A502C-C435-4B69-9CD1-31C43F20F0EB",
-            "NAME": "Parse with 'Flow Cytometry Parsing - MUK'",
+            "NAME": "Parse with 'Flow Cytometry Parsing'",
             "NODE_TYPE": "LAB_PARSING_SCRIPT",
             "PARAMETERS_EXT": "<item><key><string>LAB_PARSING_SCRIPT</string></key><value><string>FE437B38-C6BF-489B-B52D-6B821C25B36F         1</string></value></item>",
             "ENABLED": true
@@ -1247,7 +1247,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing - MUK'",
+          "description": "WORKFLOW_NODE - Parse with 'Flow Cytometry Parsing'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -1260,7 +1260,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
             "WORKFLOW_VERSION": "         1",
             "ORDER_NUMBER": "        59",
             "PARENT_NODE": "32C9A893-8F4C-4D1F-87B7-2D0844CC8131",
-            "NAME": "Parse with 'Flow Cytometry Parsing - MUK'",
+            "NAME": "Parse with 'Flow Cytometry Parsing'",
             "NODE_TYPE": "LAB_PARSING_SCRIPT",
             "PARAMETERS_EXT": "<item><key><string>LAB_PARSING_SCRIPT</string></key><value><string>FE437B38-C6BF-489B-B52D-6B821C25B36F         1</string></value></item>",
             "ENABLED": true
@@ -1697,7 +1697,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
             "NAME": "If '[Status]  != 'V'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>FORMULA</string></key><value><string>[Status]  != 'V'</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -1717,8 +1717,8 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
             "PARENT_NODE": "55BB522F-AFBB-431C-8C33-067346D4D39C",
             "NAME": "Error ''Add Test Sample - Sample  '  +  [IdText] + ' status is ' +  [Status.PhraseText] + ' Sample S",
             "NODE_TYPE": "ERROR",
-            "PARAMETERS_EXT": "<item><key><string>ERROR_MESSAGE</string></key><value><string>'Add Test Sample - Sample  '  +  [IdText] + ' status is ' +  [Status.PhraseText] + ' Sample Status must be Available to a test to sample'</string></value><key><string>IS_FATAL</string></key><value><string>F</string></value></item>",
-            "ENABLED": true
+            "PARAMETERS_EXT": "<item><key><string>ERROR_MESSAGE</string></key><value><string>'Add Test Sample - Sample  '  +  [IdText] + ' status is ' +  [Status.PhraseText] + ' Sample Status must be Available to a test to sample'</string></value><key><string>IS_FATAL</string></key><value><string>T</string></value></item>",
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -2243,6 +2243,26 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "subOperations": []
         },
         {
+          "description": "WORKFLOW_NODE - Check if there is already a test without results created for the sample. If so, use that one to add",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "COMMENT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "5AC0D891-9977-43AE-9E49-CA55C8777214"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "       107",
+            "PARENT_NODE": "32C9A893-8F4C-4D1F-87B7-2D0844CC8131",
+            "NAME": "Check if there is already a test without results created for the sample. If so, use that one to add",
+            "NODE_TYPE": "COMMENT",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
           "description": "WORKFLOW_NODE - Determine Test Exists",
           "operation": "default set",
           "deploy_action": "Create",
@@ -2254,7 +2274,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       107",
+            "ORDER_NUMBER": "       108",
             "PARENT_NODE": "32C9A893-8F4C-4D1F-87B7-2D0844CC8131",
             "NAME": "Determine Test Exists",
             "DESCRIPTION": "Check if there is already a test without results created for the sample. If so, use that one to add test results.",
@@ -2275,7 +2295,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       108",
+            "ORDER_NUMBER": "       109",
             "PARENT_NODE": "E538C1CF-B307-424B-A9B8-70B1E9E8C4D7",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -2296,7 +2316,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       109",
+            "ORDER_NUMBER": "       110",
             "PARENT_NODE": "DE2E8355-54EA-44EB-97E3-4BE19D4D9542",
             "NAME": "Value 'var_available_test_number'='0'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -2317,7 +2337,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       110",
+            "ORDER_NUMBER": "       111",
             "PARENT_NODE": "DE2E8355-54EA-44EB-97E3-4BE19D4D9542",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
@@ -2338,7 +2358,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       111",
+            "ORDER_NUMBER": "       112",
             "PARENT_NODE": "B05A5185-04CC-4DE8-B90D-0B416FB6703E",
             "NAME": "If '[Analysis.Identity] == 'FLOWCYTO' And WorkflowValue('var_available_test_number')  == '0'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -2359,7 +2379,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       112",
+            "ORDER_NUMBER": "       113",
             "PARENT_NODE": "E8287BA3-6935-42D8-96DE-8158DEDCB479",
             "NAME": "Message Box ''Sample:' +  [Sample] + 'TestNumber: ' + [TestNumber] + ', Sample status: ' +  [Sample.",
             "NODE_TYPE": "MESSAGEBOX",
@@ -2380,7 +2400,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       113",
+            "ORDER_NUMBER": "       114",
             "PARENT_NODE": "E8287BA3-6935-42D8-96DE-8158DEDCB479",
             "NAME": "If '[Status]  == 'V'   And   CollectionCount(GetEntities('RESULT', 'test_number',  [TestNumber] )) =",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -2401,7 +2421,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       114",
+            "ORDER_NUMBER": "       115",
             "PARENT_NODE": "640E83FF-4548-4CB2-AA2E-EF59DB96EEE9",
             "NAME": "Value 'var_available_test_number'='[TestNumber]'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -2422,7 +2442,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       115",
+            "ORDER_NUMBER": "       116",
             "PARENT_NODE": "32C9A893-8F4C-4D1F-87B7-2D0844CC8131",
             "NAME": "Verify Sample",
             "DESCRIPTION": "Check if there is already a test without results created for the sample. Also check sample and test statuses to decide to continue.",
@@ -2443,7 +2463,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       116",
+            "ORDER_NUMBER": "       117",
             "PARENT_NODE": "F369DC97-801B-4875-8A65-0C4899D317DD",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "DESCRIPTION": "Check if the sample is in correct status  and if there is already a test with results for regular samples.",
@@ -2465,7 +2485,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       117",
+            "ORDER_NUMBER": "       118",
             "PARENT_NODE": "A5C6DE18-F0DF-43AC-BBB5-246F09E79723",
             "NAME": "Value 'var_available_test_number'='0'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -2486,7 +2506,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       118",
+            "ORDER_NUMBER": "       119",
             "PARENT_NODE": "A5C6DE18-F0DF-43AC-BBB5-246F09E79723",
             "NAME": "If '[Status]  != 'V'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -2507,7 +2527,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       119",
+            "ORDER_NUMBER": "       120",
             "PARENT_NODE": "7DE43CD6-5EA2-4C84-8713-DFA0EBA7F7D2",
             "NAME": "Error ''Sample ' +  [IdText]  + ' status is ' +  [Status.PhraseText] + '. Status must be Available t",
             "NODE_TYPE": "ERROR",
@@ -2528,12 +2548,12 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       120",
+            "ORDER_NUMBER": "       121",
             "PARENT_NODE": "A5C6DE18-F0DF-43AC-BBB5-246F09E79723",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>SAMPLE</string></value><key><string>CHILDREN_PROPERTY</string></key><value><string>Tests</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -2549,12 +2569,12 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       121",
+            "ORDER_NUMBER": "       122",
             "PARENT_NODE": "4DEF0089-8BAF-42C1-B33F-F539ECD50A6D",
             "NAME": "If '[Analysis.Identity] == 'FLOWCYTO' And WorkflowValue('var_available_test_number')  == '0'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>FORMULA</string></key><value><string>[Analysis.Identity] == 'FLOWCYTO' And WorkflowValue('var_available_test_number')  == '0'</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -2570,7 +2590,7 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       122",
+            "ORDER_NUMBER": "       123",
             "PARENT_NODE": "50EEB807-8DDC-4A79-9FA7-53D766BDE911",
             "NAME": "Message Box ''Sample:' +  [Sample] + 'TestNumber: ' + [TestNumber] + ', Sample status: ' +  [Sample.",
             "NODE_TYPE": "MESSAGEBOX",
@@ -2591,12 +2611,12 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       123",
+            "ORDER_NUMBER": "       124",
             "PARENT_NODE": "50EEB807-8DDC-4A79-9FA7-53D766BDE911",
             "NAME": "If 'Not [Sample.IsControl] And [Status]   In ('C', 'V', 'A')  And   CollectionCount(GetEntities('RES",
             "NODE_TYPE": "FORMULA_CONDITION",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>TEST</string></value><key><string>FORMULA</string></key><value><string>Not [Sample.IsControl] And [Status]   In ('C', 'V', 'A')  And   CollectionCount(GetEntities('RESULT', 'test_number',  [TestNumber] )) &gt; 0</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
           },
           "subOperations": []
         },
@@ -2612,12 +2632,12 @@ Security Tag:30-60-27-B7-1C-68-0F-3B-65-46-56-E3-0B-F7-BA-75-FE-79-AE-46
           "fieldValues": {
             "WORKFLOW_ID": "F6CB9F5C-BD23-4504-9BEB-4D8D169A221B",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       124",
+            "ORDER_NUMBER": "       125",
             "PARENT_NODE": "783CAED7-5B1C-4EB5-8E95-43FBC0B515DD",
             "NAME": "Error ''Sample ' +  [Sample.IdText] + ' already has a flow cytometry test with results''",
             "NODE_TYPE": "ERROR",
             "PARAMETERS_EXT": "<item><key><string>ERROR_MESSAGE</string></key><value><string>'Sample ' +  [Sample.IdText] + ' already has a flow cytometry test with results'</string></value><key><string>IS_FATAL</string></key><value><string>T</string></value></item>",
-            "ENABLED": true
+            "ENABLED": false
           },
           "subOperations": []
         }
