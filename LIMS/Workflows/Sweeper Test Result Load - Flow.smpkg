@@ -1,8 +1,8 @@
-Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
+Security Tag:5A-DA-4B-AA-9F-3A-F1-F9-A6-1A-F5-F6-00-87-9D-18-89-79-00-6F
 {
   "name": "Workflow - Sweeper Test Result Load - Flow",
   "description": "Entity Deployment Package",
-  "Timestamp": "2025-01-27T16:31:29.508",
+  "Timestamp": "2025-01-29T13:33:48.398",
   "Version": "21.2.0.0",
   "operations": [
     {
@@ -926,7 +926,28 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
             "PARENT_NODE": "DFB681E6-330D-48BA-8390-D25CD3720F7E",
             "NAME": "For All Items in Lists",
             "NODE_TYPE": "ALLITEMS_IN_LISTS",
-            "PARAMETERS_EXT": "<item><key><string>LISTS</string></key><value><string>ListSectionColumnNames,ListSectionTestResults</string></value><key><string>VARIABLE_NAMES</string></key><value><string>ResultName,ResultValue</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>LISTS</string></key><value><string>ListSectionColumnNames,ListSectionTestResults,ListSectionUnits</string></value><key><string>VARIABLE_NAMES</string></key><value><string>ResultName,ResultValue,ResultUnitRaw</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Value 'var_result_unit'='Alias('CABA Unit Aliases', IIF(Contains(WorkflowValue('ResultUnitRaw'), 'Ge",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "BOX_INTO",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "3EE4BB4C-51AE-4128-9F0E-3B469B1C8B3E"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "        43",
+            "PARENT_NODE": "1D5EEBC8-B09E-4766-9AC5-A29364E29A6E",
+            "NAME": "Value 'var_result_unit'='Alias('CABA Unit Aliases', IIF(Contains(WorkflowValue('ResultUnitRaw'), 'Ge",
+            "NODE_TYPE": "SET_WORKFLOW_VALUE",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_result_unit</string></value><key><string>VALUE</string></key><value><string>Alias('CABA Unit Aliases', IIF(Contains(WorkflowValue('ResultUnitRaw'), 'Geometric Mean'), 'Geometric Mean', WorkflowValue('ResultUnitRaw')))</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -943,7 +964,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        43",
+            "ORDER_NUMBER": "        44",
             "PARENT_NODE": "1D5EEBC8-B09E-4766-9AC5-A29364E29A6E",
             "NAME": "Call 'Add Result'",
             "NODE_TYPE": "CALL_SUB_WORKFLOW",
@@ -964,7 +985,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        44",
+            "ORDER_NUMBER": "        45",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Parse Filename",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -984,7 +1005,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        45",
+            "ORDER_NUMBER": "        46",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Split file name into parts",
             "NODE_TYPE": "COMMENT",
@@ -1004,7 +1025,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        46",
+            "ORDER_NUMBER": "        47",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_trs'='RegexReplace(WorkflowValue('var_file_name') , '_.*$', '')'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1025,7 +1046,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        47",
+            "ORDER_NUMBER": "        48",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_run_date_yyyymmdd'='RegexReplace(RegexReplace(WorkflowValue('var_file_name') , '^.*?_', '",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1046,7 +1067,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        48",
+            "ORDER_NUMBER": "        49",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_op_initials'='RegexReplace(RegexReplace(WorkflowValue('var_file_name') , '^([^_]*_){2}',",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1067,7 +1088,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        49",
+            "ORDER_NUMBER": "        50",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_plate_no'='RegexReplace(RegexReplace(WorkflowValue('var_file_name') , '^([^_]*_){3}', '')",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1088,7 +1109,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        50",
+            "ORDER_NUMBER": "        51",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_file_type'='RegexReplace(RegexReplace(WorkflowValue('var_file_name') , '^([^_]*_){4}', ''",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1109,7 +1130,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        51",
+            "ORDER_NUMBER": "        52",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_file_version'='ToInt( Replace( Upper(RegexReplace(RegexReplace(WorkflowValue('var_file_na",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1130,7 +1151,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        52",
+            "ORDER_NUMBER": "        53",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Construct CABA run id",
             "NODE_TYPE": "COMMENT",
@@ -1150,7 +1171,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        53",
+            "ORDER_NUMBER": "        54",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_run_id'='WorkflowValue('var_trs') + '_' + WorkflowValue('var_date') + '_' + WorkflowValue",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1171,7 +1192,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        54",
+            "ORDER_NUMBER": "        55",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Convert date from yyyymmdd to ddMonYYYY",
             "NODE_TYPE": "COMMENT",
@@ -1191,7 +1212,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        55",
+            "ORDER_NUMBER": "        56",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_mon_int'='ToInt(Substring(WorkflowValue('var_run_date_yyyymmdd'),  4,2))'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1212,7 +1233,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        56",
+            "ORDER_NUMBER": "        57",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_mon_str'='Iif(WorkflowValue('var_mon_int')==1, 'Jan', \tIif(WorkflowValue('var_mon_int')==",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1233,7 +1254,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        57",
+            "ORDER_NUMBER": "        58",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_run_date_ddmonyyyy'='Substring(WorkflowValue('var_run_date_yyyymmdd'),  6,2) + WorkflowVa",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1254,7 +1275,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        58",
+            "ORDER_NUMBER": "        59",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Pull associated panel for the TRS value",
             "NODE_TYPE": "COMMENT",
@@ -1263,7 +1284,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "subOperations": []
         },
         {
-          "description": "WORKFLOW_NODE - Value 'var_panel'='GetValue(GetEntity('PHRASE', 'phrase_type, phrase_id', 'TRS_PN_MAP,' + WorkflowVa",
+          "description": "WORKFLOW_NODE - Value 'var_panel'='Alias('CABA TRS Aliases', WorkflowValue('var_trs'))'",
           "operation": "default set",
           "deploy_action": "Create",
           "entityType": "WORKFLOW_NODE",
@@ -1274,11 +1295,11 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        59",
+            "ORDER_NUMBER": "        60",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
-            "NAME": "Value 'var_panel'='GetValue(GetEntity('PHRASE', 'phrase_type, phrase_id', 'TRS_PN_MAP,' + WorkflowVa",
+            "NAME": "Value 'var_panel'='Alias('CABA TRS Aliases', WorkflowValue('var_trs'))'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
-            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_panel</string></value><key><string>VALUE</string></key><value><string>GetValue(GetEntity('PHRASE', 'phrase_type, phrase_id', 'TRS_PN_MAP,' + WorkflowValue('var_trs')), 'phrase_text')</string></value></item>",
+            "PARAMETERS_EXT": "<item><key><string>NAME</string></key><value><string>var_panel</string></value><key><string>VALUE</string></key><value><string>Alias('CABA TRS Aliases', WorkflowValue('var_trs'))</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -1295,7 +1316,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        60",
+            "ORDER_NUMBER": "        61",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Define previous result file name",
             "NODE_TYPE": "COMMENT",
@@ -1315,7 +1336,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        61",
+            "ORDER_NUMBER": "        62",
             "PARENT_NODE": "D7E4CFF6-E9D2-4F4C-810E-CBC1390B9804",
             "NAME": "Value 'var_previous_file_name'='WorkflowValue('var_trs') + '_' +  WorkflowValue('var_run_date_yyyymm",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1336,7 +1357,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        62",
+            "ORDER_NUMBER": "        63",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Check if there is already a test without results created for the sample. If so, use that one to add",
             "NODE_TYPE": "COMMENT",
@@ -1356,7 +1377,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        63",
+            "ORDER_NUMBER": "        64",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Determine Test Exists",
             "DESCRIPTION": "Check if there is already a test without results created for the sample. If so, use that one to add test results.",
@@ -1377,7 +1398,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        64",
+            "ORDER_NUMBER": "        65",
             "PARENT_NODE": "FC3B081E-8315-4B83-B802-0681E1526465",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -1398,7 +1419,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        65",
+            "ORDER_NUMBER": "        66",
             "PARENT_NODE": "894CEF43-25D5-4B87-8804-C3E7435DFCF6",
             "NAME": "Value 'var_available_test_number'='0'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1419,7 +1440,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        66",
+            "ORDER_NUMBER": "        67",
             "PARENT_NODE": "894CEF43-25D5-4B87-8804-C3E7435DFCF6",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
@@ -1440,7 +1461,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        67",
+            "ORDER_NUMBER": "        68",
             "PARENT_NODE": "B5767C8C-024D-473D-B5AB-D44DB4EF5A6E",
             "NAME": "If '[Analysis.Identity] == 'FLOWCYTO' And WorkflowValue('var_available_test_number')  == '0'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1461,7 +1482,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        68",
+            "ORDER_NUMBER": "        69",
             "PARENT_NODE": "4B6AE206-51FE-4AEE-83CA-0D6F4F1D6BDF",
             "NAME": "If '[Status]  == 'V'   And   CollectionCount(GetEntities('RESULT', 'test_number',  [TestNumber] )) =",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1482,7 +1503,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        69",
+            "ORDER_NUMBER": "        70",
             "PARENT_NODE": "282536E9-5F6B-4A26-A15C-C1EFEF47609B",
             "NAME": "Value 'var_available_test_number'='[TestNumber]'",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -1503,7 +1524,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        70",
+            "ORDER_NUMBER": "        71",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Add Test to Sample",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -1523,7 +1544,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        71",
+            "ORDER_NUMBER": "        72",
             "PARENT_NODE": "E24B6793-EFA3-4EB1-A268-5E795F71FFE2",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -1544,7 +1565,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        72",
+            "ORDER_NUMBER": "        73",
             "PARENT_NODE": "40DB13BD-08BF-4761-AB20-7F5919AE634B",
             "NAME": "Create Test by Formula",
             "NODE_TYPE": "CREATE_TEST_FORM",
@@ -1565,7 +1586,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        73",
+            "ORDER_NUMBER": "        74",
             "PARENT_NODE": "40DB13BD-08BF-4761-AB20-7F5919AE634B",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
@@ -1586,7 +1607,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        74",
+            "ORDER_NUMBER": "        75",
             "PARENT_NODE": "BD39CDF2-4EE4-4D76-9F68-189705719715",
             "NAME": "Go to the latest test added to the sample (at this point no test number is generated yet)",
             "NODE_TYPE": "COMMENT",
@@ -1606,7 +1627,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        75",
+            "ORDER_NUMBER": "        76",
             "PARENT_NODE": "BD39CDF2-4EE4-4D76-9F68-189705719715",
             "NAME": "If 'IsNullOrEmpty([TestNumber])' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1627,7 +1648,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        76",
+            "ORDER_NUMBER": "        77",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaFileName using 'WorkflowValue('var_file_name')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1648,7 +1669,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        77",
+            "ORDER_NUMBER": "        78",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaRunId using 'WorkflowValue('var_run_id')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1669,7 +1690,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        78",
+            "ORDER_NUMBER": "        79",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaPanel using 'WorkflowValue('var_trs')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1690,7 +1711,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        79",
+            "ORDER_NUMBER": "        80",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaRunDate using 'WorkflowValue('var_run_date_ddmonyyyy')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1711,7 +1732,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        80",
+            "ORDER_NUMBER": "        81",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaRunDate using 'AddHours([CabaRunDate],   ToInt(Global('CABA_ET_DAYLIGHT_OFFSET'))+1)'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1732,7 +1753,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        81",
+            "ORDER_NUMBER": "        82",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaOperatorInitials using 'WorkflowValue('var_op_initials')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1753,7 +1774,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        82",
+            "ORDER_NUMBER": "        83",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaPlateNo using 'WorkflowValue('var_plate_no')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1774,7 +1795,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        83",
+            "ORDER_NUMBER": "        84",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaFileType using 'WorkflowValue('var_file_type')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1795,7 +1816,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        84",
+            "ORDER_NUMBER": "        85",
             "PARENT_NODE": "419570C4-5B0F-4314-A631-627A6D960670",
             "NAME": "Set CabaFileVersion using 'WorkflowValue('var_file_version')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -1816,7 +1837,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        85",
+            "ORDER_NUMBER": "        86",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Add Result",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -1836,7 +1857,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        86",
+            "ORDER_NUMBER": "        87",
             "PARENT_NODE": "13E1515E-8BA5-4A5D-8116-36A14C5D8EDB",
             "NAME": "Select 'WorkflowValue('var_sample_id_numeric')' Sample",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -1857,7 +1878,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        87",
+            "ORDER_NUMBER": "        88",
             "PARENT_NODE": "830738A7-B929-4187-890D-2C32FB946FFF",
             "NAME": "Check if the test has just been created (id not created)",
             "NODE_TYPE": "CONDITION_SET",
@@ -1877,7 +1898,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        88",
+            "ORDER_NUMBER": "        89",
             "PARENT_NODE": "71EA7611-5C4A-43E4-9F63-16612CED7161",
             "NAME": "If 'WorkflowValue('var_available_test_number') == '0'' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1898,7 +1919,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        89",
+            "ORDER_NUMBER": "        90",
             "PARENT_NODE": "CB8ADFC2-09B7-4F92-9F13-49079841A1C8",
             "NAME": "For Each of the 'Tests'",
             "NODE_TYPE": "FOR_EACH_CHILD",
@@ -1919,7 +1940,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        90",
+            "ORDER_NUMBER": "        91",
             "PARENT_NODE": "60854316-D92F-48A6-8825-C21C211D1200",
             "NAME": "Go to the latest test added to the sample (at this point no test number is generated yet)",
             "NODE_TYPE": "COMMENT",
@@ -1939,7 +1960,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        91",
+            "ORDER_NUMBER": "        92",
             "PARENT_NODE": "60854316-D92F-48A6-8825-C21C211D1200",
             "NAME": "If 'IsNullOrEmpty([TestNumber])' then",
             "NODE_TYPE": "FORMULA_CONDITION",
@@ -1960,7 +1981,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        92",
+            "ORDER_NUMBER": "        93",
             "PARENT_NODE": "DAF19E77-939D-43FA-B441-7C3453E5BCCC",
             "NAME": "Call 'Create Result for Subworkflow'",
             "NODE_TYPE": "CALL_SUB_WORKFLOW",
@@ -1981,7 +2002,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        93",
+            "ORDER_NUMBER": "        94",
             "PARENT_NODE": "71EA7611-5C4A-43E4-9F63-16612CED7161",
             "NAME": "Else",
             "NODE_TYPE": "ELSE",
@@ -2001,7 +2022,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        94",
+            "ORDER_NUMBER": "        95",
             "PARENT_NODE": "228F5A35-9071-4821-8A76-425E428204FA",
             "NAME": "Select 'WorkflowValue('var_available_test_number')' Test",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -2022,7 +2043,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        95",
+            "ORDER_NUMBER": "        96",
             "PARENT_NODE": "5A273934-1D5E-4636-9687-78D490C62F0D",
             "NAME": "Call 'Create Result for Subworkflow'",
             "NODE_TYPE": "CALL_SUB_WORKFLOW",
@@ -2043,7 +2064,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        96",
+            "ORDER_NUMBER": "        97",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Create Result for Subworkflow",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -2063,7 +2084,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        97",
+            "ORDER_NUMBER": "        98",
             "PARENT_NODE": "97F8A242-23FD-4FD6-85F4-59768A0EAF25",
             "NAME": "Create Result",
             "NODE_TYPE": "CREATE_ENTITY",
@@ -2084,7 +2105,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        98",
+            "ORDER_NUMBER": "        99",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Link TestNumber using Current",
             "NODE_TYPE": "LINK_PROPERTY",
@@ -2105,7 +2126,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "        99",
+            "ORDER_NUMBER": "       100",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set ResultName using 'WorkflowValue('ResultName')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -2126,7 +2147,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       100",
+            "ORDER_NUMBER": "       101",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set Value using 'WorkflowValue('ResultValue')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -2147,11 +2168,32 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       101",
+            "ORDER_NUMBER": "       102",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set RawResult using 'WorkflowValue('ResultValue')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
             "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>RawResult</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('ResultValue')</string></value></item>",
+            "ENABLED": true
+          },
+          "subOperations": []
+        },
+        {
+          "description": "WORKFLOW_NODE - Set Units using 'WorkflowValue('var_result_unit')'",
+          "operation": "default set",
+          "deploy_action": "Create",
+          "entityType": "WORKFLOW_NODE",
+          "icon": "CONTRACT",
+          "keys": {
+            "WORKFLOW_NODE_GUID": "D9A65518-C329-403E-9CE4-EBF959741327"
+          },
+          "fieldValues": {
+            "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
+            "WORKFLOW_VERSION": "         1",
+            "ORDER_NUMBER": "       103",
+            "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
+            "NAME": "Set Units using 'WorkflowValue('var_result_unit')'",
+            "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
+            "PARAMETERS_EXT": "<item><key><string>ENTITY_NAME</string></key><value><string>RESULT</string></value><key><string>PROPERTY</string></key><value><string>Units</string></value><key><string>FORMULA</string></key><value><string>WorkflowValue('var_result_unit')</string></value></item>",
             "ENABLED": true
           },
           "subOperations": []
@@ -2168,7 +2210,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       102",
+            "ORDER_NUMBER": "       104",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set Text using 'WorkflowValue('ResultValue')'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -2189,7 +2231,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       103",
+            "ORDER_NUMBER": "       105",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set ResultType to 'N'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY",
@@ -2210,7 +2252,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       104",
+            "ORDER_NUMBER": "       106",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set EnteredBy using 'Operator()'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -2231,7 +2273,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       105",
+            "ORDER_NUMBER": "       107",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set EnteredOn using 'ClientNow()'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
@@ -2252,7 +2294,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       106",
+            "ORDER_NUMBER": "       108",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set Status to 'Entered'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY",
@@ -2273,7 +2315,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       107",
+            "ORDER_NUMBER": "       109",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set Places to '-1'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY",
@@ -2294,7 +2336,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       108",
+            "ORDER_NUMBER": "       110",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Set WorkflowNode to 'Result Default Lifecycle'",
             "NODE_TYPE": "SET_ENTITY_PROPERTY",
@@ -2315,7 +2357,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       109",
+            "ORDER_NUMBER": "       111",
             "PARENT_NODE": "6FDB828F-2931-4986-852C-71C05264BD53",
             "NAME": "Add Result to transaction",
             "NODE_TYPE": "ADD_TO_TRANSACTION",
@@ -2336,7 +2378,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       110",
+            "ORDER_NUMBER": "       112",
             "PARENT_NODE": "BDAA688A-E373-4176-BBA7-39FDE198FD35",
             "NAME": "Cancel Previous Test Run",
             "NODE_TYPE": "SUB_WORKFLOW",
@@ -2356,7 +2398,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       111",
+            "ORDER_NUMBER": "       113",
             "PARENT_NODE": "37CA731D-31A1-47B4-AB29-E41DE061A7A8",
             "NAME": "Cancel the test for the sample with the given test number and result file name",
             "NODE_TYPE": "COMMENT",
@@ -2376,7 +2418,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       112",
+            "ORDER_NUMBER": "       114",
             "PARENT_NODE": "37CA731D-31A1-47B4-AB29-E41DE061A7A8",
             "NAME": "Value 'var_test_number_to_cancel'='GetEntity('TEST', 'sample,analysis,caba_file_name', WorkflowValue",
             "NODE_TYPE": "SET_WORKFLOW_VALUE",
@@ -2397,7 +2439,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       113",
+            "ORDER_NUMBER": "       115",
             "PARENT_NODE": "37CA731D-31A1-47B4-AB29-E41DE061A7A8",
             "NAME": "Select 'WorkflowValue('var_test_number_to_cancel')' Test",
             "NODE_TYPE": "SELECT_ENTITY",
@@ -2418,7 +2460,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       114",
+            "ORDER_NUMBER": "       116",
             "PARENT_NODE": "BD356E57-1A62-4534-B3D7-3DD3A31221BB",
             "NAME": "Trigger 'Test Canceled'",
             "NODE_TYPE": "TRIGGER_EVENT",
@@ -2439,7 +2481,7 @@ Security Tag:D6-09-4F-56-5E-48-96-DD-EF-A5-18-EB-88-44-8B-7F-7F-84-99-A5
           "fieldValues": {
             "WORKFLOW_ID": "239CD111-388C-4658-BAFC-74CC25539801",
             "WORKFLOW_VERSION": "         1",
-            "ORDER_NUMBER": "       115",
+            "ORDER_NUMBER": "       117",
             "PARENT_NODE": "BD356E57-1A62-4534-B3D7-3DD3A31221BB",
             "NAME": "Set Comments using ''Test has been cancelled for new retest results (' + WorkflowValue('var_file_nam",
             "NODE_TYPE": "SET_ENTITY_PROPERTY_FORMULA",
